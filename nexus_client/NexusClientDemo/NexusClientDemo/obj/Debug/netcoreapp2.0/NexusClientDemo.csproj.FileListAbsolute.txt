@@ -9,3 +9,14 @@ D:\GitHub\nexus_client\NexusClientDemo\NexusClientDemo\obj\Debug\netcoreapp2.0\N
 D:\GitHub\nexus_client\NexusClientDemo\NexusClientDemo\obj\Debug\netcoreapp2.0\NexusClientDemo.AssemblyInfo.cs
 D:\GitHub\nexus_client\NexusClientDemo\NexusClientDemo\obj\Debug\netcoreapp2.0\NexusClientDemo.dll
 D:\GitHub\nexus_client\NexusClientDemo\NexusClientDemo\obj\Debug\netcoreapp2.0\NexusClientDemo.pdb
+D:\GitHub\nexus_ui\nexus_client\NexusClientDemo\NexusClientDemo\bin\Debug\netcoreapp2.0\NexusClientDemo.deps.json
+D:\GitHub\nexus_ui\nexus_client\NexusClientDemo\NexusClientDemo\bin\Debug\netcoreapp2.0\NexusClientDemo.runtimeconfig.json
+D:\GitHub\nexus_ui\nexus_client\NexusClientDemo\NexusClientDemo\bin\Debug\netcoreapp2.0\NexusClientDemo.runtimeconfig.dev.json
+D:\GitHub\nexus_ui\nexus_client\NexusClientDemo\NexusClientDemo\bin\Debug\netcoreapp2.0\NexusClientDemo.dll
+D:\GitHub\nexus_ui\nexus_client\NexusClientDemo\NexusClientDemo\bin\Debug\netcoreapp2.0\NexusClientDemo.pdb
+D:\GitHub\nexus_ui\nexus_client\NexusClientDemo\NexusClientDemo\obj\Debug\netcoreapp2.0\NexusClientDemo.csprojAssemblyReference.cache
+D:\GitHub\nexus_ui\nexus_client\NexusClientDemo\NexusClientDemo\obj\Debug\netcoreapp2.0\NexusClientDemo.csproj.CoreCompileInputs.cache
+D:\GitHub\nexus_ui\nexus_client\NexusClientDemo\NexusClientDemo\obj\Debug\netcoreapp2.0\NexusClientDemo.AssemblyInfoInputs.cache
+D:\GitHub\nexus_ui\nexus_client\NexusClientDemo\NexusClientDemo\obj\Debug\netcoreapp2.0\NexusClientDemo.AssemblyInfo.cs
+D:\GitHub\nexus_ui\nexus_client\NexusClientDemo\NexusClientDemo\obj\Debug\netcoreapp2.0\NexusClientDemo.dll
+D:\GitHub\nexus_ui\nexus_client\NexusClientDemo\NexusClientDemo\obj\Debug\netcoreapp2.0\NexusClientDemo.pdb

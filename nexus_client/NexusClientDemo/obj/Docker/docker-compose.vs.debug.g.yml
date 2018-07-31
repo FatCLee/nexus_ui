@@ -10,7 +10,7 @@ services:
       - NUGET_PACKAGES=C:\.nuget\packages
       - NUGET_FALLBACK_PACKAGES=c:\.nuget\fallbackpackages
     volumes:
-      - D:\GitHub\nexus_client\NexusClientDemo\NexusClientDemo:C:\app
+      - D:\GitHub\nexus_ui\nexus_client\NexusClientDemo\NexusClientDemo:C:\app
       - C:\Users\Siliang\onecoremsvsmon\15.0.27703.2026:C:\remote_debugger:ro
       - C:\Users\Siliang\.nuget\packages\:c:\.nuget\packages:ro
       - C:\Program Files\dotnet\sdk\NuGetFallbackFolder:c:\.nuget\fallbackpackages:ro

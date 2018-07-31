@@ -10,73 +10,74 @@
 
 <body>
   <header>
-    <h1>SMI NEXUS</h1>
+    <div id="logo">
+      <h1>SMI NEXUS</h1>
+    </div>
     <div id="login_info">
-      <span>{{ username }}</span>
-      <span><button>{{ branchname }}</button></span>
+      <span id="username">{{ username }}</span>
+      <span>
+        <button class="branch-button">{{ branchname }}</button>
+      </span>
     </div>
   </header>
   <nav>
-    <div id="horizontal_menu">
-      <ul>
-        <li>File</li>
-        <div class="nav-dropdown">
-          <ul>
-            <li>
-              <a href="#">User Settings</a>
-            </li>
-            <li>
-              <a href="#">Exit</a>
-            </li>
-          </ul>
+    <div id="horizontal_menu" class="navbar">
+      <div class="dropdown">
+        <button class="dropbtn">File
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+          <a href="#">User Settings</a>
+          <a href="#">Exit</a>
         </div>
-        <li>Edit</li>
-        <div class="nav-dropdown">
-          <ul>
-            <li>
-              <a href="#">Cut</a>
-            </li>
-            <li>
-              <a href="#">Copy</a>
-            </li>
-            <li>
-              <a href="#">Paste</a>
-            </li>
-          </ul>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">Edit
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+          <a href="#">Cut</a>
+          <a href="#">Copy</a>
+          <a href="#">Paste</a>
         </div>
-        <li>Maintenance</li>
-        <div class="nav-dropdown">
-          <ul id="maintenance_dropdown">
-            <li v-for="item in maintenance_items">
-              <a href="#">{{ item }}</a>
-            </li>
-          </ul>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">Maintenance
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div id="maintenance_dropdown" class="dropdown-content">
+          <a v-for="item in maintenance_items" href="#">{{ item }}</a>
         </div>
-        <li>Applications</li>
-        <div class="nav-dropdown">
-          <ul id="applications_dropdown">
-            <li v-for="item in applications_items">
-              <a href="#">{{ item }}</a>
-            </li>
-          </ul>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">Applications
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div id="applications_dropdown" class="dropdown-content">
+          <a v-for="item in applications_items" href="#">{{ item }}</a>
         </div>
-        <li>Help</li>
-        <div class="nav-dropdown">
-          <ul>
-            <li>
-              <a href="#">Help</a>
-            </li>
-          </ul>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">Help
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+          <a href="#">About</a>
         </div>
-      </ul>
+      </div>
     </div>
   </nav>
   <main>
-    this is the main.
+    <div class="main-content">
+      main content
+    </div>
   </main>
   <footer>
-    this is the footer.
+    <div class="copyright">
+      Copyrights and stuff.
+    </div>
   </footer>
 </body>
 <script src="index.js"></script>
+
 </html>

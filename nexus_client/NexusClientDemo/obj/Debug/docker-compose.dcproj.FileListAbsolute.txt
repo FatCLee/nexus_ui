@@ -1,1 +1,2 @@
 D:\GitHub\nexus_client\NexusClientDemo\obj\Debug\docker-compose.dcproj.CoreCompileInputs.cache
+D:\GitHub\nexus_ui\nexus_client\NexusClientDemo\obj\Debug\docker-compose.dcproj.CoreCompileInputs.cache
