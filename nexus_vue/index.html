@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>SMI NEXUS</title>
+  <title>SMI NEXUS WEBSITE</title>
   <script src="vue.js"></script>
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
@@ -11,7 +11,7 @@
 <body>
   <header>
     <div id="logo">
-      <h1>SMI NEXUS</h1>
+      <h1>SMI NEXUS WEBSITE</h1>
     </div>
     <div id="login_info">
       <span id="username">{{ username }}</span>
@@ -19,57 +19,60 @@
         <button class="branch-button">{{ branchname }}</button>
       </span>
     </div>
+    <nav id="main-menu" class="navbar">
+      <main-menu-bar :menu-items="menuItems"></main-menu-bar>
+    </nav>
   </header>
-  <nav>
-    <div id="horizontal_menu" class="navbar">
-      <div class="dropdown">
-        <button class="dropbtn">File
-          <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-content">
-          <a href="#">User Settings</a>
-          <a href="#">Exit</a>
-        </div>
-      </div>
-      <div class="dropdown">
-        <button class="dropbtn">Edit
-          <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-content">
-          <a href="#">Cut</a>
-          <a href="#">Copy</a>
-          <a href="#">Paste</a>
-        </div>
-      </div>
-      <div class="dropdown">
-        <button class="dropbtn">Maintenance
-          <i class="fa fa-caret-down"></i>
-        </button>
-        <div id="maintenance_dropdown" class="dropdown-content">
-          <a v-for="item in maintenance_items" href="#">{{ item }}</a>
-        </div>
-      </div>
-      <div class="dropdown">
-        <button class="dropbtn">Applications
-          <i class="fa fa-caret-down"></i>
-        </button>
-        <div id="applications_dropdown" class="dropdown-content">
-          <a v-for="item in applications_items" href="#">{{ item }}</a>
-        </div>
-      </div>
-      <div class="dropdown">
-        <button class="dropbtn">Help
-          <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-content">
-          <a href="#">About</a>
-        </div>
-      </div>
-    </div>
-  </nav>
   <main>
     <div class="main-content">
-      main content
+      <nav>
+        <div id="active_tabs">
+          <ul>
+            <li v-for="tab in tabs">
+              <div class="active-tab">
+                <button class="tab-button">
+                  <span class="tab-title">{{ tab }}</span>
+                  <button class="tab-close-button">
+                    X
+                  </button>
+                </button>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <div id="demo">
+        <form id="search">
+          Search
+          <input name="query" v-model="searchQuery">
+        </form>
+        <demo-grid :data="gridData" :columns="gridColumns" :filter-key="searchQuery">
+        </demo-grid>
+      </div>
+      <div id="manual_message_tab_content" class="tab-content">
+        <div class="filters">
+          <div class="filters-form">
+            <form id="filterform">
+              <span v-for="filter in filters">
+                <label>{{ filter.name }}</label>
+                <input />
+              </span>
+            </form>
+          </div>
+          <div class="filters-buttons">
+            <button>Search</button>
+            <button>Clear</button>
+          </div>
+        </div>
+        <div class="tab-buttons">
+          <button>New</button>
+          <button>Edit</button>
+          <button>Export</button>
+          <button>Audit</button>
+        </div>
+        <div class="results">
+        </div>
+      </div>
     </div>
   </main>
   <footer>
@@ -78,6 +81,28 @@
     </div>
   </footer>
 </body>
+<script type="text/x-template" id="grid-template">
+  <table>
+    <thead>
+      <tr>
+        <th v-for="key in columns"
+          @click="sortBy(key)"
+          :class="{ active: sortKey == key }">
+          {{ key | capitalize }}
+          <span class="arrow" :class="sortOrders[key] > 0 ? 'asc' : 'dsc'">
+          </span>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="entry in filteredData">
+        <td v-for="key in columns">
+          {{entry[key]}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</script>
 <script src="index.js"></script>
 
 </html>
