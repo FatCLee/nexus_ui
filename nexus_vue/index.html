@@ -3,9 +3,63 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>SMI NEXUS WEBSITE</title>
-  <script src="vue.js"></script>
   <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="vue.js"></script>
+  <script type="text/x-template" id="menu-template">
+    <ul>
+      <li class="dropdown" v-for="menuItem in menuItems">
+        <button class="dropbtn">{{ menuItem.name }}</button>
+        <ul class="dropdown-content">
+          <li>
+            <button 
+              v-for="subItem in menuItem.subItems" 
+              @click="onClick(subItem)">{{ subItem }}</button>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </script>
+  <script type="text/x-template" id="opened-tabs-template">
+    <ul class="opened-tabs">
+      <li v-for="tab in openedTabs">
+        <div v-if="tab.isActive" class="active-tab">
+          <button class="active-button" @click="onClick(tab)">
+            {{ tab.name }}
+            <a class="tab-close-button" @click="onClose(tab)">x</a>
+          </button>
+        </div>
+        <div v-else class="opened-tab">
+            <button class="tab-button" @click="onClick(tab)">
+              {{ tab.name }}
+              <a class="tab-close-button" @click="onClose(tab)">x</a>
+            </button>
+          </div>
+      </li>
+    </ul>
+  </script>
+  <script type="text/x-template" id="grid-template">
+    <table>
+      <thead>
+        <tr>
+          <th v-for="key in columns"
+            @click="sortBy(key)"
+            :class="{ active: sortKey == key }">
+            {{ key | capitalize }}
+            <span class="arrow" :class="sortOrders[key] > 0 ? 'asc' : 'dsc'">
+            </span>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="entry in filteredData">
+          <td v-for="key in columns">
+            {{entry[key]}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </script>
+  <title>SMI NEXUS WEBSITE</title>
 </head>
 
 <body>
@@ -13,34 +67,28 @@
     <div id="logo">
       <h1>SMI NEXUS WEBSITE</h1>
     </div>
-    <div id="login_info">
+    <div id="login-info">
       <span id="username">{{ username }}</span>
       <span>
         <button class="branch-button">{{ branchname }}</button>
       </span>
     </div>
     <nav id="main-menu" class="navbar">
-      <main-menu-bar :menu-items="menuItems"></main-menu-bar>
+      <main-menu-bar 
+        :menu-items="menuItems" 
+        :opened-tabs="openedTabs">
+      </main-menu-bar>
     </nav>
   </header>
   <main>
     <div class="main-content">
-      <nav>
-        <div id="active_tabs">
-          <ul>
-            <li v-for="tab in tabs">
-              <div class="active-tab">
-                <button class="tab-button">
-                  <span class="tab-title">{{ tab }}</span>
-                  <button class="tab-close-button">
-                    X
-                  </button>
-                </button>
-              </div>
-            </li>
-          </ul>
-        </div>
+      <nav id="opened-tabs">
+        <opened-tabs-bar :opened-tabs="openedTabs"></opened-tabs-bar>
       </nav>
+      <br />
+      <br />
+      <br />
+      <br />
       <div id="demo">
         <form id="search">
           Search
@@ -81,28 +129,7 @@
     </div>
   </footer>
 </body>
-<script type="text/x-template" id="grid-template">
-  <table>
-    <thead>
-      <tr>
-        <th v-for="key in columns"
-          @click="sortBy(key)"
-          :class="{ active: sortKey == key }">
-          {{ key | capitalize }}
-          <span class="arrow" :class="sortOrders[key] > 0 ? 'asc' : 'dsc'">
-          </span>
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr v-for="entry in filteredData">
-        <td v-for="key in columns">
-          {{entry[key]}}
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</script>
+
 <script src="index.js"></script>
 
 </html>

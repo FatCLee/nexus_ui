@@ -1,18 +1,8 @@
 var username = new Vue({
-  el: '#login_info',
+  el: '#login-info',
   data: {
     username: 'John Doe',
     branchname: 'SMI Singapore'
-  }
-})
-
-var activetabs = new Vue({
-  el: '#active_tabs',
-  data: {
-    tabs: [
-      'Holidays',
-      'Manual Messages'
-    ],
   }
 })
 
@@ -47,25 +37,18 @@ var tab = new Vue({
 
 Vue.component('main-menu-bar', {
   data: function () {
-    return {
-      count: 0
-    }
+    return {}
   },
   props: {
     menuItems: Array,
+    openedTabs: Array,
   },
-  template: `
-    <ul>
-      <li class="dropdown" v-for="menuItem in menuItems">
-        <button class="dropbtn">{{ menuItem.name }}</button>
-        <ul class="dropdown-content">
-          <li>
-            <a href="#" v-for="subItem in menuItem.subItems">{{ subItem }}</a>
-          </li>
-        </ul>
-      </li>
-    </ul>
-  `
+  template: '#menu-template',
+  methods: {
+    onClick: function (subItem) {
+      alert(this.openedTabs[0].name);
+    }
+  },
 })
 
 var mainMenu = new Vue({
@@ -83,9 +66,9 @@ var mainMenu = new Vue({
       {
         name: 'Maintenance',
         subItems: [
-          'Hollidays', 
-          'Manual Messages', 
-          'Participant', 
+          'Hollidays',
+          'Manual Messages',
+          'Participant',
           'Bulking Group',
           'Resend Request',
           'CSD Account Mapping'
@@ -105,6 +88,57 @@ var mainMenu = new Vue({
         name: 'Help',
         subItems: ['About']
       },
+    ]
+  }
+})
+
+Vue.component('opened-tabs-bar', {
+  data: function () {
+    return {}
+  },
+  props: {
+    openedTabs: Array,
+  },
+  template: '#opened-tabs-template',
+  methods: {
+    onClick: function (tab) {
+      if (tab.isActive) {
+        return;
+      }
+
+      this.openedTabs.forEach(function (t) {
+        if (t.isActive) {
+          t.isActive = false;
+        }
+      });
+      tab.isActive = true;
+    },
+    onClose: function (tab) {
+      var index = this.openedTabs.indexOf(tab);
+      if (index < 0) {
+        return;
+      }
+
+      if (tab.isActive && this.openedTabs.length > 1) {
+        if (index == 0) {
+          this.openedTabs[1].isActive = true;
+        } else {
+          this.openedTabs[index - 1].isActive = true;
+        }
+      }
+
+      this.openedTabs.splice(index, 1);
+    }
+  },
+})
+
+var openedTab = new Vue({
+  el: '#opened-tabs',
+  data: {
+    openedTabs: [
+      { name: 'Holidays', isActive: false },
+      { name: 'Manual Messages', isActive: true },
+      { name: 'Participant', isActive: false }
     ]
   }
 })
